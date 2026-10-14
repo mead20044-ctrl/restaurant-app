@@ -1,6 +1,6 @@
 import { menuItems } from '../menuData'
 
-function Cart({ isOpen, onClose, cart, onChangeQty, onRemove }) {
+function Cart({ isOpen, onClose, cart, onChangeQty, onRemove, onCheckout }) {
   const lines = cart.map((line) => {
     const item = menuItems.find((m) => m.id === line.id)
     return { ...item, qty: line.qty }
@@ -92,7 +92,9 @@ function Cart({ isOpen, onClose, cart, onChangeQty, onRemove }) {
                 <span>Subtotal</span>
                 <strong>${subtotal.toFixed(2)}</strong>
               </div>
-              <button className="btn btn--primary btn--full">Checkout</button>
+              <button className="btn btn--primary btn--full" onClick={onCheckout}>
+  Checkout
+</button>
               <p className="cart-drawer_hint">
                 Delivery fee is calculated at checkout.
               </p>

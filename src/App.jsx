@@ -3,11 +3,17 @@ import './App.css'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Menu from './components/Menu'
+import About from './components/About'
+import Footer from './components/Footer'
 import Cart from './components/Cart'
+import Checkout from './components/Checkout'
+import Confirmation from './components/Confirmation'
 
 function App() {
   const [cart, setCart] = useState([])
   const [isCartOpen, setIsCartOpen] = useState(false)
+  const [view, setView] = useState('shop')
+  const [order, setOrder] = useState(null)
 
   const addToCart = (id) => {
     setCart((prev) => {
@@ -35,6 +41,19 @@ function App() {
     setCart((prev) => prev.filter((line) => line.id !== id))
   }
 
+  const goToCheckout = () => {
+    setIsCartOpen(false)
+    setView('checkout')
+    window.scrollTo(0, 0)
+  }
+
+  const placeOrder = (details) => {
+    setOrder(details)
+    setCart([])
+    setView('confirmation')
+    window.scrollTo(0, 0)
+  }
+
   const cartCount = cart.reduce((sum, line) => sum + line.qty, 0)
 
   return (
@@ -43,16 +62,36 @@ function App() {
         cartCount={cartCount}
         onCartClick={() => setIsCartOpen(true)}
       />
-      <main>
-        <Hero />
-        <Menu onAdd={addToCart} />
-      </main>
+
+      {view === 'shop' && (
+        <main>
+          <Hero />
+          <Menu onAdd={addToCart} />
+          <About />
+        </main>
+      )}
+
+      {view === 'checkout' && (
+        <Checkout
+          cart={cart}
+          onBack={() => setView('shop')}
+          onPlaceOrder={placeOrder}
+        />
+      )}
+
+      {view === 'confirmation' && (
+        <Confirmation order={order} onBackToMenu={() => setView('shop')} />
+      )}
+
+      <Footer />
+
       <Cart
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
         cart={cart}
         onChangeQty={changeQty}
         onRemove={removeFromCart}
+        onCheckout={goToCheckout}
       />
     </div>
   )
