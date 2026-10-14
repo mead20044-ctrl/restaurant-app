@@ -1,16 +1,78 @@
-# React + Vite
+# The Golden Spoon 🍽️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A restaurant ordering website built with React. Browse the menu, add dishes to your cart, and place an order through a simple checkout flow.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Responsive header with a mobile navigation menu
+- Hero section and an "Our story" section
+- Menu with category tabs and live search
+- Shopping cart drawer: add items, change quantities, remove items
+- Cart saved in the browser (localStorage), so it survives page refreshes
+- Checkout form with validation and an order summary
+- Order confirmation page
+- Footer with opening hours and contact details
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [React](https://react.dev/)
+- [Vite](https://vite.dev/)
+- Plain CSS
+- JavaScript (ES6+)
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Clone the repository:
+
+```bash
+   git clone https://github.com/mead20044-ctrl/restaurant-app.git
+   cd restaurant-app
+```
+
+2. Install dependencies:
+
+```bash
+   npm install
+```
+
+3. Start the development server:
+
+```bash
+   npm run dev
+```
+
+4. Open the local address shown in the terminal (usually `http://localhost:5173`).
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── Header.jsx
+│   ├── Hero.jsx
+│   ├── Menu.jsx
+│   ├── Cart.jsx
+│   ├── Checkout.jsx
+│   ├── Confirmation.jsx
+│   ├── About.jsx
+│   └── Footer.jsx
+├── menuData.js
+├── App.jsx
+├── App.css
+└── index.css
+```
+
+## What I Learned
+
+- Building a UI from reusable React components
+- Managing state with `useState` and side effects with `useEffect`
+- Passing data between components with props
+- Working with forms and validation
+- Version control with Git and GitHub
+
+## Future Improvements
+
+- Connect to a backend to store real orders
+- Add user accounts
+- Add online payment
+- Add Arabic language support (RTL)
