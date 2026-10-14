@@ -2,6 +2,8 @@
 
 A restaurant ordering website built with React. Browse the menu, add dishes to your cart, and place an order through a simple checkout flow.
 
+🔗 **Live demo:** https://restaurant-app-six-kappa.vercel.app
+
 ## Features
 
 - Responsive header with a mobile navigation menu
